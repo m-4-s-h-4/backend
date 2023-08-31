@@ -1,0 +1,14 @@
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+
+cd /var
+git clone <repo>
+cd backend
+npm install
+
+sudo cp node-server.service /etc/systemd/system/
+sudo systemctl enable node-server
+sudo systemctl daemon-reload
+sudo systemctl status node-server
+
