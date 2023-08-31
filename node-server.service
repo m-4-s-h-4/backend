@@ -1,0 +1,11 @@
+[Unit]
+Description=Node.js Server with OPE Environmental Variable
+
+[Service]
+Environment=OPENAI_KEY=val
+ExecStart=/usr/bin/npm /var/backend
+WorkingDirectory=/var/backend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
