@@ -9,8 +9,18 @@ app.use(express.json());
 
 app.post('/api/generate-box-ideas', async (req, res) => {
     const { answers } = req.body;
-    const prompt = `Create 3 different box ideas for a person who likes ${answers.join(', ')}. 
-    Ensure that at least 1 box targets the person to try a similar activity.`;
+    const prompt = `Create at most 3 different box ideas for a person who likes: ${answers.join(', ')}.
+    Ensure that at least 1 box targets the person to try a similar activity.
+    The answer most generated with the following format:
+
+    ----------
+    "<box title>"
+    <box description>
+    - <box item 1>
+    - <box item 2>
+    - <box item 3>
+    - <box item 4>
+    ----------`;
 
     try {
         const response = await axios.post(
